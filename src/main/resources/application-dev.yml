@@ -1,0 +1,42 @@
+server:
+  port: 9000
+
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC
+    username: admin
+    password: 1234
+  config:
+    activate:
+      on-profile: dev
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+        format_sql: true
+        show_sql: true
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        default_batch_fetch_size: 100
+
+jwt:
+  secret: testkey
+
+
+logging:
+  level:
+    com:
+      amazonaws:
+        util:
+          EC2MetadataUtils: error
+    web:
+      debug
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
